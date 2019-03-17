@@ -1,6 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
+from django.utils import timezone
 from django.views import generic
 
 from .models import Choice, Question
@@ -11,7 +12,10 @@ class IndexView(generic.ListView):
     context_object_name = 'latest_question_list'
 
     def get_queryset(self):
-        """return the last five published questions"""
+        """
+        return the last five published questions
+        (not including those in the future)
+        """
         return Question.objects.order_by('-pub_date')[:5]
 
 
