@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Question
+from .models import Choice, Question
 
 class QuestionAdmin(admin.ModelAdmin):
     fields = ['pub_date', 'question_text']
@@ -12,3 +12,4 @@ class QuestionAdmin(admin.ModelAdmin):
     ]
 
 admin.site.register(Question, QuestionAdmin)
+admin.site.register(Choice)
